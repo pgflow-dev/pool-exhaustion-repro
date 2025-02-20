@@ -1,4 +1,4 @@
-import { EdgeWorker } from "jsr:@pgflow/edge-worker@0.0.3";
+import { EdgeWorker } from "jsr:@pgflow/edge-worker@0.0.3-spawnfix";
 import { delay } from "jsr:@std/async";
 import postgres from "npm:postgres@3.4.5";
 
