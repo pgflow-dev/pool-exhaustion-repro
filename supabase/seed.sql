@@ -8,4 +8,4 @@ SELECT
             jsonb_build_object('i', i)
         )
     )
-FROM generate_series(1, 500000) AS i;
+FROM generate_series(1, 100000) AS i;
