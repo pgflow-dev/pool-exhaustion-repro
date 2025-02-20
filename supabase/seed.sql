@@ -1,3 +1,6 @@
+CREATE SEQUENCE IF NOT EXISTS test_seq;
+
+SELECT * FROM pgmq.create('tasks');
 SELECT
     pgmq.send_batch(
         queue_name => 'tasks',

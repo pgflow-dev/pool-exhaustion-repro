@@ -7,8 +7,9 @@ const sql = postgres(EDGE_WORKER_DB_URL, { prepare: false });
 
 async function handler(message: { i: number }) {
   await delay(50);
+  const seqValue = await sql`SELECT nextval('test_seq')`;
 
-  console.log("Handler invoked", { message, dbTime: await sql`SELECT now()` });
+  console.log("Handler invoked", { message, seqValue });
 }
 
 EdgeWorker.start(handler, {
