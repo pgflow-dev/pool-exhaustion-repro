@@ -1,0 +1,55 @@
+{
+  "version": "3",
+  "packages": {
+    "specifiers": {
+      "jsr:@henrygd/queue@^1.0.7": "jsr:@henrygd/queue@1.0.7",
+      "jsr:@pgflow/edge-worker@0.0.3": "jsr:@pgflow/edge-worker@0.0.3",
+      "jsr:@std/async": "jsr:@std/async@1.0.10",
+      "jsr:@std/fmt@^1.0.5": "jsr:@std/fmt@1.0.5",
+      "jsr:@std/fs@^1.0.11": "jsr:@std/fs@1.0.13",
+      "jsr:@std/io@^0.225.2": "jsr:@std/io@0.225.2",
+      "jsr:@std/log@^0.224.13": "jsr:@std/log@0.224.14",
+      "npm:postgres@3.4.5": "npm:postgres@3.4.5"
+    },
+    "jsr": {
+      "@henrygd/queue@1.0.7": {
+        "integrity": "98cade132744bb420957c5413393f76eb8ba7261826f026c8a89a562b8fa2961"
+      },
+      "@pgflow/edge-worker@0.0.3": {
+        "integrity": "4a01e1167ea6bcaa91aa3cbffc76a24971f106296556c69c1eee907866855c75",
+        "dependencies": [
+          "jsr:@henrygd/queue@^1.0.7",
+          "jsr:@std/log@^0.224.13",
+          "npm:postgres@3.4.5"
+        ]
+      },
+      "@std/async@1.0.10": {
+        "integrity": "2ff1b1c7d33d1416159989b0f69e59ec7ee8cb58510df01e454def2108b3dbec"
+      },
+      "@std/fmt@1.0.5": {
+        "integrity": "0cfab43364bc36650d83c425cd6d99910fc20c4576631149f0f987eddede1a4d"
+      },
+      "@std/fs@1.0.13": {
+        "integrity": "756d3ff0ade91c9e72b228e8012b6ff00c3d4a4ac9c642c4dac083536bf6c605"
+      },
+      "@std/io@0.225.2": {
+        "integrity": "3c740cd4ee4c082e6cfc86458f47e2ab7cb353dc6234d5e9b1f91a2de5f4d6c7"
+      },
+      "@std/log@0.224.14": {
+        "integrity": "257f7adceee3b53bb2bc86c7242e7d1bc59729e57d4981c4a7e5b876c808f05e",
+        "dependencies": [
+          "jsr:@std/fmt@^1.0.5",
+          "jsr:@std/fs@^1.0.11",
+          "jsr:@std/io@^0.225.2"
+        ]
+      }
+    },
+    "npm": {
+      "postgres@3.4.5": {
+        "integrity": "sha512-cDWgoah1Gez9rN3H4165peY9qfpEo+SA61oQv65O3cRUE1pOEoJWwddwcqKE8XZYjbblOJlYDlLV4h67HrEVDg==",
+        "dependencies": {}
+      }
+    }
+  },
+  "remote": {}
+}
