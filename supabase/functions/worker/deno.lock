@@ -5,12 +5,15 @@
       "jsr:@henrygd/queue@^1.0.7": "jsr:@henrygd/queue@1.0.7",
       "jsr:@pgflow/edge-worker@0.0.3": "jsr:@pgflow/edge-worker@0.0.3",
       "jsr:@pgflow/edge-worker@0.0.3-spawnfix": "jsr:@pgflow/edge-worker@0.0.3-spawnfix",
+      "jsr:@pgflow/edge-worker@^0.0.4": "jsr:@pgflow/edge-worker@0.0.4",
       "jsr:@std/async": "jsr:@std/async@1.0.10",
+      "jsr:@std/async@^1.0.10": "jsr:@std/async@1.0.10",
       "jsr:@std/fmt@^1.0.5": "jsr:@std/fmt@1.0.5",
       "jsr:@std/fs@^1.0.11": "jsr:@std/fs@1.0.13",
       "jsr:@std/io@^0.225.2": "jsr:@std/io@0.225.2",
       "jsr:@std/log@^0.224.13": "jsr:@std/log@0.224.14",
-      "npm:postgres@3.4.5": "npm:postgres@3.4.5"
+      "npm:postgres@3.4.5": "npm:postgres@3.4.5",
+      "npm:postgres@^3.4.5": "npm:postgres@3.4.5"
     },
     "jsr": {
       "@henrygd/queue@1.0.7": {
@@ -26,6 +29,14 @@
       },
       "@pgflow/edge-worker@0.0.3-spawnfix": {
         "integrity": "da1118bb85fb8812a538fdef3a3611f5fb47a2db7d978d94d64e36ae3044bd5f",
+        "dependencies": [
+          "jsr:@henrygd/queue@^1.0.7",
+          "jsr:@std/log@^0.224.13",
+          "npm:postgres@3.4.5"
+        ]
+      },
+      "@pgflow/edge-worker@0.0.4": {
+        "integrity": "e84366c53e486cb8ca095435af21622f1eff056fa28856ea9a4fb8ecc3275d6e",
         "dependencies": [
           "jsr:@henrygd/queue@^1.0.7",
           "jsr:@std/log@^0.224.13",
@@ -60,5 +71,12 @@
       }
     }
   },
-  "remote": {}
+  "remote": {},
+  "workspace": {
+    "dependencies": [
+      "jsr:@pgflow/edge-worker@^0.0.4",
+      "jsr:@std/async@^1.0.10",
+      "npm:postgres@^3.4.5"
+    ]
+  }
 }

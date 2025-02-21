@@ -1,9 +1,11 @@
-import { EdgeWorker } from "jsr:@pgflow/edge-worker@0.0.3-spawnfix";
-import { delay } from "jsr:@std/async";
-import postgres from "npm:postgres@3.4.5";
+import { EdgeWorker } from "@pgflow/edge-worker";
+import { delay } from "@std/async";
+import postgres from "postgres";
 
 const EDGE_WORKER_DB_URL = Deno.env.get("EDGE_WORKER_DB_URL")!;
 const sql = postgres(EDGE_WORKER_DB_URL, { prepare: false });
+
+const serviceRoleClient = createClient({});
 
 async function handler(message: { i: number }) {
   await delay(50);

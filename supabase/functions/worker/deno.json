@@ -1,3 +1,7 @@
 {
-  "imports": {}
+  "imports": {
+    "@pgflow/edge-worker": "jsr:@pgflow/edge-worker@^0.0.4",
+    "@std/async": "jsr:@std/async@^1.0.10",
+    "postgres": "npm:postgres@^3.4.5"
+  }
 }
