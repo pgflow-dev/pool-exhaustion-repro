@@ -6,15 +6,35 @@ import { createClient } from "@supabase/supabase-js";
 const EDGE_WORKER_DB_URL = Deno.env.get("EDGE_WORKER_DB_URL")!;
 const sql = postgres(EDGE_WORKER_DB_URL, { prepare: false });
 
-const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
-const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
-const serviceRoleClient = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
+// const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
+// const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+// const serviceRoleClient = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
-async function handler(message: { i: number }) {
+type Payload = {
+  i: number;
+  initial: number;
+};
+
+async function sendNextMessage(message: Payload) {
+  return await sql`
+    SELECT *
+    FROM pgmq.send(
+      queue_name => 'tasks',
+      msg => jsonb_build_object(
+        'i', ${message.i}::bigint + 1,
+        'initial', ${message.initial}::bigint
+      )
+    )
+  `;
+}
+
+async function handler(message: Payload) {
   await delay(50);
-  const seqValue = await sql`SELECT nextval('test_seq')`;
 
-  console.log("Handler invoked", { message, seqValue });
+  console.log("Handler invoked", {
+    message,
+    result: await sendNextMessage(message),
+  });
 }
 
 EdgeWorker.start(handler, {
