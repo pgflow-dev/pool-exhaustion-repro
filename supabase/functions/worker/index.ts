@@ -1,11 +1,14 @@
 import { EdgeWorker } from "@pgflow/edge-worker";
 import { delay } from "@std/async";
 import postgres from "postgres";
+import { createClient } from "@supabase/supabase-js";
 
 const EDGE_WORKER_DB_URL = Deno.env.get("EDGE_WORKER_DB_URL")!;
 const sql = postgres(EDGE_WORKER_DB_URL, { prepare: false });
 
-const serviceRoleClient = createClient({});
+const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
+const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+const serviceRoleClient = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
 async function handler(message: { i: number }) {
   await delay(50);

@@ -2,6 +2,7 @@
   "imports": {
     "@pgflow/edge-worker": "jsr:@pgflow/edge-worker@^0.0.4",
     "@std/async": "jsr:@std/async@^1.0.10",
+    "@supabase/supabase-js": "jsr:@supabase/supabase-js@^2.48.1",
     "postgres": "npm:postgres@^3.4.5"
   }
 }
