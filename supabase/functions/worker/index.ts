@@ -3,6 +3,10 @@ import { delay } from "@std/async";
 import postgres from "postgres";
 import { createClient } from "@supabase/supabase-js";
 
+function randomInt(min: number, max: number) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 const EDGE_WORKER_DB_URL = Deno.env.get("EDGE_WORKER_DB_URL")!;
 const sql = postgres(EDGE_WORKER_DB_URL, { prepare: false });
 
@@ -29,12 +33,18 @@ async function sendNextMessage(message: Payload) {
 }
 
 async function handler(message: Payload) {
-  await delay(50);
+  await delay(randomInt(50, 1500));
 
-  console.log("Handler invoked", {
-    message,
-    result: await sendNextMessage(message),
-  });
+  if (randomInt(1, 10) > 7) {
+    console.log("Handler invoked", {
+      message,
+      result: await sendNextMessage(message),
+    });
+  } else {
+    console.log("Handler invoked", {
+      message,
+    });
+  }
 }
 
 EdgeWorker.start(handler, {
